@@ -1,0 +1,31 @@
+@import "./node_modules/bootstrap/scss/bootstrap.scss";
+
+
+.toolbox{
+  .btn{
+    min-width: 50px;
+  }
+}
+
+.task{
+  padding: 20px;
+  
+  .title{
+    font-size: 140%;
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+  
+  .command{
+    margin:0;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-size: 1rem;
+  }
+  
+  .description{
+    font-size: 75%;
+    margin: 25px 0 0 0;
+  }
+  
+}
