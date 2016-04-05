@@ -1,0 +1,10 @@
+.card.task.col-xs-12(ng-show="agent.tasks", ng-repeat="task in agent.tasks")
+          p.title {{task.portal}}
+          p.status.pull-right
+            span.label.label-default(ng-show='task.status == 0') Not completed
+            span.label.label-info(ng-show='task.status == 1') On my way
+            span.label.label-info(ng-show='task.status == 2') Arrived
+            span.label.label-success(ng-show='task.status == 3') Finished
+          p.command.blockquote {{task.command}}
+          p.description 
+            | {{task.area}} {{getPortalLocation(task).lang}}

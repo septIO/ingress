@@ -14,21 +14,9 @@ block content
   .row
     .col-xs-12.col-sm-4.col-lg-2
       p Tasks for {{agent.username}}
-    .col-md-2.hidden-md-down.toolbox
-      .btn-group(data-toggle="buttons")
-        .btn.btn-secondary.fa(class = 'fa-volume-{{settings.volume ? "up" : "off"}}', ng-click = 'settings.volume = !settings.volume')
-        .btn.btn-secondary.fa(class = 'fa-bell{{settings.notifications ? "-slash" : ""}}-o', ng-click = 'settings.notifications = !settings.notifications')
-    .col-xs-12.col-md-6.col-lg-8
-      progress(min=0,max=100,value='{{calculateMissionProgress()}}').col-xs-12
+    .col-xs-12.col-md-8.col-lg-10
+      progress.progress(max="100", value="{{calculateMissionProgress()}}",class="progress-{{calculateMissionProgress()<30 ? 'danger': calculateMissionProgress()<75 ? 'warning' : 'success'}}")
   .row
-    .col-xs-12.col-md-6
-      .card.task(ng-show="agent.tasks", ng-repeat="task in agent.tasks")
-          p.title {{task.portal}}
-          p.status.pull-right
-            span.label.label-default(ng-show='task.status == 0') Not completed
-            span.label.label-info(ng-show='task.status == 1') On my way
-            span.label.label-info(ng-show='task.status == 2') Arrived
-            span.label.label-success(ng-show='task.status == 3') Finished
-          p.command.blockquote {{task.command}}
-          p.description 
-            | {{task.area}} {{getPortalLocation(task).lang}}
+    .col-xs-12(ng-class="{'col-md-7' : agent.linkMissions}")
+      include partials/missionCardList
+    include partials/linkMissionCard

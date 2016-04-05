@@ -23,7 +23,9 @@ app.controller('MainController', ['$scope', function(scope){
           status : 3,
           command : 'Jarvis'
         }
-      ]
+      ],
+    linkMissions : true
+    
   };
   
   scope.settings = {
@@ -50,9 +52,9 @@ app.controller('MainController', ['$scope', function(scope){
     
     p = (typeof portal === 'object') ? portal.portal : portal;
     
-    location = reg.exec(p);
+    loc = reg.exec(p);
     
-    return {long : location[0], lang : location[1]};
+    return {long : loc[0], lang : loc[1]};
   }
   
   
